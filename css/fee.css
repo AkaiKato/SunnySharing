@@ -1,0 +1,163 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'roboto', sans-serif;
+}
+
+.main-container {
+    display: flex;
+    min-height: 100vh;
+    max-height: 100vh;
+}
+
+.container {
+    padding: 50px;
+    width: 60%;
+}
+
+.img {
+    width: 40%;
+    object-fit: cover;
+}
+
+.radioCont {
+    display: flex;
+    margin: 20px;
+}
+
+.radioBtn {
+    margin-top: 90px;
+    margin-left: 20px;
+}
+
+.infoFee {
+    padding: 10px;
+    margin-left: 25px;
+    width: 100%;
+    border: black;
+    text-align: center;
+    outline: auto;
+}
+
+.nameTarif {
+    margin-top: 20px;
+    font-size: 25px;
+}
+
+.time {
+    margin-top: 20px;
+    font-size: 25px;
+}
+
+.money {
+    margin-top: 20px;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+input[type='radio'] {
+    transform: scale(2);
+}
+
+.formRadioBtn {
+    width: 100%;
+}
+
+.formRadioBtn input[type=radio] {
+    display: none;
+}
+
+.formRadioBtn label {
+    width: 100%;
+    text-align: center;
+    display: block;
+    cursor: pointer;
+    padding: 20px 15px;
+    font-size: 25px;
+    line-height: 50px;
+    border: black;
+    border-radius: 6px;
+    outline: auto;
+}
+
+
+/* Checked */
+
+.formRadioBtn input[type=radio]:checked+label {
+    background: #bbb7b7;
+}
+
+.columnLeft {
+    width: 50%;
+}
+
+.columnRight {
+    width: 50%;
+}
+
+.columns {
+    display: flex;
+    height: 70%;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapperBtn {
+    position: relative;
+    height: 30%;
+}
+
+.btnNext {
+    position: absolute;
+    bottom: 80px;
+    /* bottom: 50%; */
+    width: 100%;
+    height: 80px;
+    font-size: large;
+    text-align: center;
+    line-height: 40px;
+    background: black;
+    color: #fff;
+    border: black;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 30px 15px 15px;
+}
+
+.alert-box {
+    width: 520px;
+    min-height: 150px;
+    background: #fff;
+    border-radius: 10px;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    /* transition: 1s; */
+}
+
+.alert-box.show {
+    opacity: 1;
+    pointer-events: all;
+    top: 50%;
+}
+
+.alert-img {
+    display: block;
+    margin: 10px auto 20px;
+    height: 60px;
+}
+
+.alert-msg {
+    color: black;
+    font-size: 20px;
+    text-transform: capitalize;
+    text-align: center;
+    line-height: 30px;
+    font-weight: 500;
+}

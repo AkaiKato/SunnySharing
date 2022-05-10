@@ -1,0 +1,12 @@
+Сверстать все страницы для проекта
+
+admin.html
+endOfFee.html       DONE
+fee.html            DONE
+history.html
+index.html          DONE
+main.html           DONE
+Q&A.html
+signup.html         DONE
+techsuport.html
+workerstechsupport.html

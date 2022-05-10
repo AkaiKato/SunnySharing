@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'roboto', sans-serif;
+}
+
+.main-container {
+    width: 100%;
+    display: flex;
+    min-height: 100vh;
+    max-height: 100vh;
+}
+
+.container {
+    width: 100%;
+}
+
+.img {
+    width: 40%;
+    object-fit: contain;
+    overflow: hidden;
+}
+
+.content {
+    width: 98%;
+    display: flex;
+}
+
+.data {
+    width: 60%;
+    display: block;
+}
+
+.img_car {
+    width: 40%;
+    margin-top: 80px;
+}
+
+.img_img {
+    width: 100%;
+    object-fit: contain;
+    overflow: hidden;
+}
+
+.content_header {
+    width: 100%;
+}
+
+.content_header h3 {
+    text-align: center;
+    padding: 20px;
+    font-size: 35px;
+}
+
+.content p {
+    font-size: 20px;
+    margin-left: 60px;
+}
+
+.content h3 {
+    font-size: 20px;
+    margin-left: 40px;
+    padding: 20px;
+}
+
+.person {
+    margin-top: 50px;
+    display: flex;
+    width: 100%;
+}
+
+.car {
+    margin-top: 50px;
+    display: flex;
+    width: 100%;
+}
+
+.leftColumn {
+    width: 50%;
+}
+
+.rightColumn {
+    width: 50%;
+}
+
+.content_footer {
+    position: relative;
+    height: 30%;
+    width: 100%;
+}
+
+
+/* div {
+    border: black;
+    outline: auto;
+} */
+
+.btn_back {
+    position: absolute;
+    bottom: 80px;
+    width: 98%;
+    height: 80px;
+    font-size: large;
+    text-align: center;
+    line-height: 40px;
+    background: black;
+    color: #fff;
+    border: black;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 30px 15px 15px;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}

@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'roboto', sans-serif;
+}
+
+select {
+    display: block;
+    font-size: large;
+    width: 95%;
+    padding: 20px;
+    border-radius: 5px;
+    background: #fff;
+    border: black;
+    outline: auto;
+    margin-top: 20px;
+    margin-left: 15px;
+    margin-bottom: 20px;
+    color: black;
+    font-size: 14px;
+}
+
+.container {
+    display: flex;
+}
+
+.main-container {
+    width: 70%;
+    min-height: 100vh;
+    display: flex;
+}
+
+.sub-container {
+    width: 30%;
+    min-height: 100vh;
+    display: flex;
+}
+
+.alert-box {
+    width: 520px;
+    min-height: 150px;
+    background: #fff;
+    border-radius: 10px;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    /* transition: 1s; */
+}
+
+.alert-box.show {
+    opacity: 1;
+    pointer-events: all;
+    top: 50%;
+}
+
+.alert-img {
+    display: block;
+    margin: 10px auto 20px;
+    height: 60px;
+}
+
+.alert-msg {
+    color: black;
+    font-size: 20px;
+    text-transform: capitalize;
+    text-align: center;
+    line-height: 30px;
+    font-weight: 500;
+}
+
+.hide {
+    display: none;
+}
+
+.img_zagl {
+    width: 30%;
+}
+
+.img_car {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.content_container {
+    width: 100%;
+    position: relative;
+}
+
+.car {
+    display: flex;
+    margin-left: 15px;
+}
+
+h3 {
+    width: 95%;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.car p {
+    width: 95%;
+    font-size: 25px;
+    padding: 5px;
+    margin-left: 15px;
+}
+
+.btn_rent {
+    width: 95%;
+    height: 80px;
+    font-size: large;
+    text-align: center;
+    line-height: 40px;
+    background: black;
+    color: #fff;
+    border: black;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 30px 15px 15px;
+}
+
+.btn-rent-form {
+    width: 100%;
+    position: absolute;
+    bottom: 100px;
+}
+
+.leftColumn {
+    width: 50%;
+}
+
+.rightColumn {
+    width: 50%;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
