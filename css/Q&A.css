@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'roboto', sans-serif;
+}
+
+.main-container {
+    width: 100%;
+    min-height: 100vh;
+    /* max-height: 100vh; */
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.main-container li {
+    font-size: 35px;
+    padding: 20px;
+    margin-left: 30px;
+}
+
+.main-container p {
+    font-size: 25px;
+    padding: 20px;
+    margin-left: 60px;
+}

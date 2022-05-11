@@ -16,12 +16,6 @@
     width: 100%;
 }
 
-.img {
-    width: 40%;
-    object-fit: contain;
-    overflow: hidden;
-}
-
 .content {
     width: 98%;
     display: flex;
@@ -29,6 +23,7 @@
 
 .data {
     width: 60%;
+    min-height: 70vh;
     display: block;
 }
 
@@ -78,6 +73,7 @@
 
 .leftColumn {
     width: 50%;
+    padding-left: 20px;
 }
 
 .rightColumn {
@@ -86,19 +82,13 @@
 
 .content_footer {
     position: relative;
-    height: 30%;
+    height: 20vh;
     width: 100%;
 }
 
-
-/* div {
-    border: black;
-    outline: auto;
-} */
-
 .btn_back {
     position: absolute;
-    bottom: 80px;
+    bottom: 100px;
     width: 98%;
     height: 80px;
     font-size: large;

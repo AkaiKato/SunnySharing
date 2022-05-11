@@ -1,0 +1,228 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'roboto', sans-serif;
+}
+
+.main-container {
+    width: 100%;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.main_container_header {
+    width: 100%;
+    display: flex;
+    padding: 10px;
+}
+
+
+/* REQUESTS */
+
+.main_requests {
+    width: 100%;
+    padding: 10px;
+}
+
+.person_specs {
+    margin-top: 20px;
+    width: 100%;
+    background-color: #dbd1d1;
+    border: black;
+    outline: auto;
+}
+
+.person_block {
+    width: 100%;
+    display: flex;
+    padding: 10px;
+}
+
+.leftColumn {
+    width: 50%;
+}
+
+.rightColumn {
+    width: 50%;
+}
+
+.btn_request,
+.show_car,
+.add_car_btn,
+.accept_btn,
+.decline_btn,
+.change_btn,
+.delete_btn,
+.add_btn {
+    width: 15%;
+    height: 40px;
+    font-size: medium;
+    text-align: center;
+    line-height: 40px;
+    background: black;
+    color: #fff;
+    border: black;
+    border-radius: 5px;
+    cursor: pointer;
+    /* margin: 0 auto; */
+}
+
+.show_car,
+.add_car_btn {
+    margin-left: 30%;
+}
+
+.block_btn {
+    width: 100%;
+    padding: 5px;
+    object-position: center;
+}
+
+
+/* SHOW */
+
+.main_show {
+    width: 100%;
+    padding: 10px;
+}
+
+.car_specs {
+    margin-top: 20px;
+    width: 100%;
+    background-color: #dbd1d1;
+    border: black;
+    outline: auto;
+}
+
+.car_block {
+    width: 100%;
+    display: flex;
+    padding: 10px;
+}
+
+.img_block {
+    width: 10%;
+    padding: 10px;
+}
+
+.img_img {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.firstcol,
+.secondcol,
+.thirdcol,
+.fourthcol,
+.fifthcol {
+    width: 18%;
+    padding: 15px;
+}
+
+.car_block h3 {
+    padding: 10px;
+}
+
+.car_block p {
+    padding-left: 10px;
+}
+
+.change_btn,
+.delete_btn {
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+
+/*ADD*/
+
+.main_add {
+    width: 100%;
+    padding: 10px;
+}
+
+.add_car {
+    margin-top: 20px;
+    width: 100%;
+    background-color: #dbd1d1;
+    border: black;
+    outline: auto;
+}
+
+.car_form_add {
+    width: 100%;
+    padding: 10px;
+}
+
+.car_specs_add,
+.car_img_add {
+    width: 100%;
+    display: flex;
+}
+
+.firstColumn {
+    width: 50%;
+    padding: 10px;
+}
+
+.secondColumn {
+    width: 50%;
+    padding: 10px;
+}
+
+.firstColumnSec {
+    width: 50%;
+    padding: 10px;
+}
+
+.secondColumnSec {
+    width: 50%;
+    text-align: center;
+    padding: 10px;
+}
+
+.car_specs_add h3 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.upload-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #7e7979;
+    cursor: pointer;
+    background-size: cover;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea,
+select,
+input[type="number"] {
+    display: block;
+    font-size: small;
+    width: 80%;
+    height: 12px;
+    padding: 20px;
+    border-radius: 5px;
+    background: #fff;
+    border: black;
+    outline: auto;
+    color: black;
+    font-size: 14px;
+}
+
+.add_btn {
+    margin-left: 10px;
+    margin-bottom: 10px;
+}

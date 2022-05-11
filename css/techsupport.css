@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'roboto', sans-serif;
+}
+
+.main-container {
+    width: 100%;
+    min-height: 85vh;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.send {
+    width: 100%;
+}
+
+.answ {
+    width: 100%;
+}
+
+.wrapper_person_content,
+.wrapper_techsupport_content {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+}
+
+.wrapper_person_content,
+.wrapper_techsupport_content p {
+    font-size: 35px;
+}
+
+.wrapper_person_enters_content,
+.wrapper_techsupport_enters_content {
+    width: 100%;
+    padding: 20px;
+}
+
+textarea {
+    display: block;
+    width: 100%;
+    height: 50vh;
+    padding: 20px;
+    border-radius: 5px;
+    background: #fff;
+    border: black;
+    outline: auto;
+    font-size: 35px;
+    color: black;
+}
+
+.btn_send {
+    width: 540px;
+    height: 80px;
+    font-size: large;
+    text-align: center;
+    line-height: 40px;
+    background: black;
+    color: #fff;
+    border-radius: 2px;
+    border: black;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 30px 0;
+}
+
+.wrapper_btn {
+    width: 100%;
+    padding: 20px;
+}
