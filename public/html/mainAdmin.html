@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="vieport" content="width=device-width, initial-scale=1.0">
     <title>SunnySharing-main</title>
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/mainAdmin.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
@@ -33,42 +33,44 @@
             <img src="../img/error.png" class="alert-img" alt="">
             <p class="alert-msg">Ошибка!</p>
         </div>
-        <div class="container">
-            <div class="main-container" id="yaMap">
+        <div class="main-container">
+            <div class="button-container">
+                <button class="showtechsupportbtn">ТехПоддержка</button>
+                <button class="showadminsbtn">Администраторы</button>
+                <button class="addworkerbtn">Добавить Сотрудника</button>
             </div>
-            <img class="img_zagl" src="../img/cool.png">
-            <div class="sub-container hide">
-                <div class="content_container">
-                    <select id="dropList">
-                        <option value="" disabled selected>Выберите машину</option>
-                        <option>KIA</option>
-                        <option>MERSEDES</option>
-                    </select>
-                    <img class="img_car" src="../img/car.jpeg" alt="zagl">
-                    <div class="car">
-                        <div class="leftColumn">
-                            <h3>Марка</h3>
-                            <p>KIA</p>
-                            <h3>Модель</h3>
-                            <p>RIO</p>
-                            <h3>Регистрационный знак</h3>
-                            <p>ОН123А</p>
-                            <h3>Цвет</h3>
-                            <p>Черный</p>
-                        </div>
-                        <div class="rightColumn">
-                            <h3>Пробег</h3>
-                            <p>5555КМ</p>
-                            <h3>Коробка передач</h3>
-                            <p>Автомат</p>
-                            <h3>Тип двигателя</h3>
-                            <p>Бензин</p>
-                            <h3>Тип кузова</h3>
-                            <p>Седан</p>
+            <div class="content-container">
+                <div class="showtech hide"></div>
+                <div class="showadmins hide"></div>
+                <div class="addworkers hide">
+                    <div class="addworkersform">
+                        <div class="workersInfo">
+                            <div class="firstcolumn">
+                                <h3>Фамилия</h3>
+                                <input type="text" id="surnameAdd"></input>
+                                <h3>Имя</h3>
+                                <input type="text" id="nameAdd"></input>
+                                <h3>Отчество</h3>
+                                <input type="text" id="fatherNameAdd"></input>
+                                <h3>Должность</h3>
+                                <select id="dropList">
+                                    <option value="" selected disabled>-Выберите должность-</option>
+                                    <option>ТехПоддержка</option>
+                                    <option>Администратор</option>
+                                </select>
+                            </div>
+                            <div class="secondcolumn">
+                                <h3>Номер телефона</h3>
+                                <input type="text" id="numberAdd"></input>
+                                <h3>Логин</h3>
+                                <input type="text" id="loginAdd"></input>
+                                <h3>Пароль</h3>
+                                <input type="text" id="passwordAdd"></input>
+                            </div>
                         </div>
                     </div>
-                    <div class="btn-rent-form">
-                        <button class="btn_rent">Арендовать</button>
+                    <div class="block_btn">
+                        <button class="add_btn">Добавить</button>
                     </div>
                 </div>
             </div>
@@ -93,7 +95,9 @@
     </footer>
 
     <script src="../js/jquery-3.6.0.min.js" type="text/javascript"></script>
-    <script src="../js/main.js" type="text/javascript"></script>
+    <script src="../js/mainAdmin.js" type="text/javascript"></script>
+    <script src="../js/createPlates.js" type="text/javascript"></script>
+
 </body>
 
 </html>

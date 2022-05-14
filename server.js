@@ -3,7 +3,9 @@ var express = require("express"),
     path = require('path'),
     app = express(),
     mongoose = require("mongoose"),
-    UserController = require("./controllers/UserController")
+    UserController = require("./controllers/UserController"),
+    TechSupportController = require("./controllers/TechsupportController"),
+    AdministratorsController = require("./controllers/AdministratorsController")
     // SellerController = require("./controllers/seller_controller"),
     // ProductController = require("./controllers/product_controller")
 
@@ -64,11 +66,63 @@ app.get("/techsupport", (req, res) => {
     res.sendFile(path.join(staticPath, "html/techsupport.html"))
 })
 
+app.post('/techsupportAdd', (req, res) => {
+    TechSupportController.create(req, res);
+})
+
+app.post('/getAllTechs', (req, res) => {
+    TechSupportController.getAll(req, res);
+})
+
+app.post('/delTech', (req, res) => {
+    TechSupportController.deleteById(req, res);
+})
+
+app.post('/techgetone', (req, res) => {
+    TechSupportController.getOne(req, res);
+})
+
+app.post('/techupdate', (req, res) => {
+    TechSupportController.update(req, res);
+})
+
+//administrators
+
+app.get('/administrators', (req, res) => {
+    res.sendFile(path.join(staticPath, "html/admin.html"))
+})
+
+app.post('/administratorsAdd', (req, res) => {
+    AdministratorsController.create(req, res);
+})
+
+app.post('/getAllAdmins', (req, res) => {
+    AdministratorsController.getAll(req, res);
+})
+
+app.post('/delAdministrator', (req, res) => {
+    AdministratorsController.deleteById(req, res);
+})
+
+app.post('/admingetone', (req, res) => {
+    AdministratorsController.getOne(req, res);
+})
+
+app.post('/adminupdate', (req, res) => {
+    AdministratorsController.update(req, res);
+})
+
 //history
 
 app.get("/history", (req, res) => {
     res.sendFile(path.join(staticPath, "html/history.html"))
 })
 
+
+//mainAdmin
+
+app.get('/mainAdmin', (req, res) => {
+    res.sendFile(path.join(staticPath, "html/mainAdmin.html"))
+})
 
 http.createServer(app).listen(3000);

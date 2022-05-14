@@ -1,0 +1,221 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'roboto', sans-serif;
+}
+
+.main-container {
+    width: 100%;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.button-container {
+    width: 100%;
+    display: flex;
+    padding: 10px;
+}
+
+.showtechsupportbtn,
+.showadminsbtn,
+.addworkerbtn,
+.changebtn,
+.delbtn,
+.add_btn,
+.changeAdminbtn,
+.delAdminbtn {
+    width: 15%;
+    height: 40px;
+    font-size: medium;
+    text-align: center;
+    line-height: 40px;
+    background: black;
+    color: #fff;
+    border: black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.addworkerbtn,
+.showadminsbtn {
+    margin-left: 30%;
+}
+
+.onetech {
+    border: black;
+    outline: auto;
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    background-color: #dbd1d1;
+    margin-top: 10px;
+}
+
+.oneadmin {
+    border: black;
+    outline: auto;
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    background-color: #dbd1d1;
+    margin-top: 10px;
+}
+
+.addworkersform {
+    width: 100%;
+    padding: 10px;
+}
+
+.workersInfo {
+    width: 100%;
+    display: flex;
+    padding: 10px;
+}
+
+.firstcolumn {
+    width: 100%;
+}
+
+.secondcolumn {
+    width: 100%;
+}
+
+.leftcolumn {
+    width: 35%;
+}
+
+.rightcolumn {
+    width: 35%;
+}
+
+.changebtn,
+.delbtn,
+.changeAdminbtn,
+.delAdminbtn {
+    margin-top: 10px;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.btnWrapper {
+    padding: 10px;
+    width: 30%;
+    display: block;
+}
+
+.onetech h3 {
+    width: 95%;
+    font-size: 15px;
+    padding: 5px;
+}
+
+.onetech p {
+    width: 95%;
+    font-size: 15px;
+    padding: 5px;
+    margin-left: 15px;
+}
+
+.oneadmin h3 {
+    width: 95%;
+    font-size: 15px;
+    padding: 5px;
+}
+
+.oneadmin p {
+    width: 95%;
+    font-size: 15px;
+    padding: 5px;
+    margin-left: 15px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea,
+input[type="number"] {
+    display: block;
+    font-size: small;
+    width: 80%;
+    height: 12px;
+    padding: 20px;
+    border-radius: 5px;
+    background: #fff;
+    border: black;
+    outline: auto;
+    color: black;
+    font-size: 14px;
+}
+
+select {
+    display: block;
+    font-size: small;
+    width: 80%;
+    padding: 12px;
+    border-radius: 5px;
+    background: #fff;
+    border: black;
+    outline: auto;
+    color: black;
+    font-size: 14px;
+}
+
+.addworkersform h3 {
+    width: 95%;
+    font-size: 30px;
+    padding: 5px;
+}
+
+.block_btn {
+    width: 100%;
+    padding-left: 10px;
+}
+
+.add_btn {
+    height: 70px;
+    width: 20%;
+    font-size: larger;
+}
+
+.alert-box {
+    width: 520px;
+    min-height: 150px;
+    background: #fff;
+    border-radius: 10px;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    /* transition: 1s; */
+}
+
+.alert-box.show {
+    opacity: 1;
+    pointer-events: all;
+    top: 50%;
+}
+
+.alert-img {
+    display: block;
+    margin: 10px auto 20px;
+    height: 60px;
+}
+
+.alert-msg {
+    color: black;
+    font-size: 20px;
+    text-transform: capitalize;
+    text-align: center;
+    line-height: 30px;
+    font-weight: 500;
+}
+
+.hide {
+    display: none;
+}

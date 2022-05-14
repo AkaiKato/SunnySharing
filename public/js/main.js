@@ -34,10 +34,14 @@ window.onload = () => {
         myMap.geoObjects.add(myPlacemark);
 
         myPlacemark.events.add('click', function() {
-            $(".sub-container").removeClass("hide");
-            $(".img_zagl").addClass("hide")
-                // $('#yourDiv').trigger("create");
+            document.querySelector('.sub-container').classList.toggle('hide')
+            document.querySelector('.img_zagl').classList.toggle('hide');
+            // console.log(URL.createObjectURL($('img_car').attr('src')))
+            // $('#yourDiv').trigger("create");
         })
     }
-
 }
+
+$("#dropList").on('change', function() {
+    console.log($("#dropList option:selected").text());
+})
