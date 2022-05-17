@@ -6,13 +6,27 @@ var express = require("express"),
     UserController = require("./controllers/UserController"),
     TechSupportController = require("./controllers/TechsupportController"),
     AdministratorsController = require("./controllers/AdministratorsController")
-    // SellerController = require("./controllers/seller_controller"),
-    // ProductController = require("./controllers/product_controller")
 
+const multer = require("multer");
+const fs = require("fs");
 var staticPath = path.join(__dirname, "public");
+var imgPath
 
 app.use(express.static(staticPath));
 app.use(express.json());
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, 'uploads/');
+    },
+
+    filename: function(req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+});
+
+app.use(multer({ storage: storage }).single("filedata"));
+
 app.use(express.urlencoded());
 mongoose.connect('mongodb://localhost/SunnySharing', {
     useNewUrlParser: true,
@@ -66,6 +80,10 @@ app.get("/techsupport", (req, res) => {
     res.sendFile(path.join(staticPath, "html/techsupport.html"))
 })
 
+app.get("/worktechsupport", (req, res) => {
+    res.sendFile(path.join(staticPath, "html/workerstechsupport.html"))
+})
+
 app.post('/techsupportAdd', (req, res) => {
     TechSupportController.create(req, res);
 })
@@ -112,17 +130,41 @@ app.post('/adminupdate', (req, res) => {
     AdministratorsController.update(req, res);
 })
 
+app.post('/getUnacceptedUsers', (req, res) => {
+    AdministratorsController.getUnacceptedUsers(req, res)
+})
+
+app.post('/acceptUser', (req, res) => {
+    AdministratorsController.acceptUser(req, res)
+})
+
+app.post('/declineUser', (req, res) => {
+    AdministratorsController.declineUser(req, res)
+})
+
+app.post('/upload', (req, res) => {
+    imgPath = req.file.path //для того чтобы сохранить путь к файлу
+})
+
+app.post('/getImg', (req, res) => {
+    fs.readFile(__dirname + '/uploads/filedata-1652800984232.png', function(err, data) {
+        res.writeHead(200, { 'Content-Type': 'image/jpg' });
+        res.write(Buffer.from(data).toString('base64'))
+        res.end();
+    });
+})
+
 //history
 
 app.get("/history", (req, res) => {
     res.sendFile(path.join(staticPath, "html/history.html"))
 })
 
-
 //mainAdmin
 
 app.get('/mainAdmin', (req, res) => {
     res.sendFile(path.join(staticPath, "html/mainAdmin.html"))
 })
+
 
 http.createServer(app).listen(3000);

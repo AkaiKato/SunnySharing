@@ -1,6 +1,8 @@
 var User = require("../models/user"),
+    Admin = require("../models/administrators"),
+    Tech = require("../models/techsupport"),
+    mainAdmin = require("../models/mainAdmin"),
     UserController = {},
-    path = require('path'),
     mongoose = require("mongoose");
 
 UserController.create = function(req, res) {
@@ -61,7 +63,34 @@ UserController.login = function(req, res) {
         } else if (result.length !== 0) {
             return res.json(200, result)
         } else {
-            return res.json({ 'alert': 'Такого пользователя нет в системе' });
+            Tech.find({ "login": login, "password": password }, function(err, result) {
+                if (err) {
+                    console.log(err);
+                    res.send(500, err);
+                } else if (result.length != 0) {
+                    return res.json(200, { 'tech': result })
+                } else {
+                    Admin.find({ "login": login, "password": password }, function(err, result) {
+                        if (err) {
+                            console.log(err);
+                            res.send(500, err);
+                        } else if (result.length != 0) {
+                            return res.json(200, { 'admin': result })
+                        } else {
+                            mainAdmin.find({ "login": login, "password": password }, function(err, result) {
+                                if (err) {
+                                    console.log(err);
+                                    res.send(500, err);
+                                } else if (result.length != 0) {
+                                    return res.json(200, { 'mAdmin': result })
+                                } else {
+                                    return res.json({ 'alert': 'Такого пользователя нет в системе' });
+                                }
+                            })
+                        }
+                    })
+                }
+            })
         }
     });
 }

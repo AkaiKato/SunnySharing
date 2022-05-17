@@ -16,9 +16,23 @@ const processDataLogIn = (data) => {
     if (data.alert) {
         showAlert(data.alert);
         return;
+    } else if (data.admin) {
+        localStorage.setItem("adminID", data.admin.map(admin => admin._id));
+        localStorage.setItem("adminLogin", data.admin.map(admin => admin.login));
+        location.replace('/administrators');
+        return;
+    } else if (data.tech) {
+        localStorage.setItem("techID", data.tech.map(tech => tech._id));
+        localStorage.setItem("techLogin", data.tech.map(tech => tech.login));
+        location.replace('/worktechsupport');
+        return;
+    } else if (data.mAdmin) {
+        localStorage.setItem("loginadmin", data.mAdmin.map(mAdmin => mAdmin.login));
+        location.replace('/mainAdmin');
+        return;
     }
     sessionStorage.user = JSON.stringify(data);
-    location.href = '/map';
+    location.replace('/map');
 }
 
 const showAlert = (msg) => {
@@ -29,18 +43,4 @@ const showAlert = (msg) => {
     }, 3000)
 }
 
-window.onload = () => {
-    let user = JSON.parse(sessionStorage.user || null)
-    if (user != null) {
-        $('.account-info').text('Вы вошли как, ' + user.map(user => user.login));
-        $("#user-history").on('click', function() {
-            location.href = '/history';
-        })
-        $("#user-btn").on('click', function() {
-            sessionStorage.clear();
-            location.href = '/';
-        })
-    } else {
-        $(".header-items").addClass('hide');
-    }
-}
+$(".header-items").addClass('hide');

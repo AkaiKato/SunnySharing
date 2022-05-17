@@ -5,6 +5,21 @@ const addworkerbtn = document.querySelector('.addworkerbtn');
 const showadmins = document.querySelector('.showadmins');
 const showadminsbtn = document.querySelector('.showadminsbtn');
 
+const userImageButton = document.querySelector('#user-img');
+const userPop = document.querySelector('.login-logout-popup');
+
+userImageButton.addEventListener('click', () => {
+    userPop.classList.toggle('hide');
+});
+
+$("#user-history").addClass("hide");
+
+$("#user-btn").on("click", function() {
+    location.replace("/");
+    localStorage.removeItem("loginadmin")
+})
+
+
 showtechsupportbtn.addEventListener('click', () => {
     $('.showtech').removeClass('hide')
     $('.showadmins').addClass('hide')
@@ -26,14 +41,19 @@ addworkerbtn.addEventListener('click', () => {
 
 window.onload = () => {
     showtech.classList.toggle('hide')
-    $('.header-items').addClass('hide')
-    var getAdmins = { name: "all" }
-    $.post("/getAllAdmins", getAdmins, function(responce) {
-        responce.forEach(product => createPlateAdmin(product))
-    })
-    $.post("/getAllTechs", getAdmins, function(responce) {
-        responce.forEach(product => createPlateTech(product))
-    })
+    if (localStorage.getItem("loginadmin") != null) {
+        let user = localStorage.getItem("loginadmin")
+        $('.account-info').text('Вы вошли как, ' + user);
+        var getAdmins = { name: "all" }
+        $.post("/getAllAdmins", getAdmins, function(responce) {
+            responce.forEach(product => createPlateAdmin(product))
+        })
+        $.post("/getAllTechs", getAdmins, function(responce) {
+            responce.forEach(product => createPlateTech(product))
+        })
+    } else {
+        location.replace("/")
+    }
 }
 
 
@@ -95,6 +115,7 @@ $('.add_btn').on('click', function() {
                 password: $("#passwordAdd").val()
             }
             $.post("/adminupdate", updateAdmin, function(responce) {
+                sessionStorage.id = null;
                 location.href = '/mainAdmin';
             })
         } else {
@@ -108,6 +129,7 @@ $('.add_btn').on('click', function() {
                 password: $("#passwordAdd").val()
             }
             $.post("/techupdate", updateTech, function(responce) {
+                sessionStorage.id = null;
                 location.href = '/mainAdmin';
             })
         }
@@ -119,7 +141,6 @@ const processData = (data) => {
         showAlert(data.alert);
         return;
     }
-    // location.href = '/';
 }
 
 

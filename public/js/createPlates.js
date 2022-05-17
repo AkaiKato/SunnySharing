@@ -81,3 +81,60 @@ const techchangeBtnClick = (data) => {
         setDataTech(responce);
     })
 }
+
+const createPlateUser = (data) => {
+    let showtech = document.querySelector('.main_requests');
+    var birthday = data.birthday.split("T").shift();
+    var passportDate = data.passportDate.split("T").shift();
+    var licenseDate = data.licenseDate.split("T").shift();
+    showtech.innerHTML += '\
+    <div class="person_specs">\
+        <div class="person_block">\
+            <div class="leftColumn">\
+                <h3>Фамилия</h3>\
+                <p>' + data.surname + '</p>\
+                <h3>Имя</h3>\
+                <p>' + data.name + '</p>\
+                <h3>Отчество</h3>\
+                <p>' + data.fathername + '</p>\
+                <h3>Номер Телефона</h3>\
+                <p>' + data.number + '</p>\
+                <h3>Дата рождения</h3>\
+                <p>' + birthday + '</p>\
+                <h3>Номер паспорта</h3>\
+                <p>' + data.passportNumber + '</p>\
+            </div>\
+            <div class="rightColumn">\
+                <h3>Серия</h3>\
+                <p>' + data.passportSeries + '</p>\
+                <h3>Кем Выдан</h3>\
+                <p>' + data.passportIsued + '</p>\
+                <h3>Дата выдачи</h3>\
+                <p>' + passportDate + '</p>\
+                <h3>Номер удостоверения</h3>\
+                <p>' + data.licenseNumber + '</p>\
+                <h3>Дата окончания срока действия прав</h3>\
+                <p>' + licenseDate + '</p>\
+            </div>\
+        </div>\
+        <div class="block_btn">\
+            <button class="accept_btn" onclick="confirmBtnClick(' + "'" + data._id + "'" + ')">Принять</button>\
+            <button class="decline_btn" onclick="declineBtnClick(' + "'" + data._id + "'" + ')">Отклонить</button>\
+        </div>\
+    </div> \
+    '
+}
+
+const confirmBtnClick = (data) => {
+    var getId = { id: data };
+    $.post("/acceptUser", getId, function(responce) {
+        location.reload();
+    })
+}
+
+const declineBtnClick = (data) => {
+    var getId = { id: data };
+    $.post("/declineUser", getId, function(responce) {
+        location.reload();
+    })
+}

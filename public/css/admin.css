@@ -108,7 +108,8 @@
     padding: 10px;
 }
 
-.img_img {
+.img_img,
+.img_img_add {
     width: 100%;
     height: 100%;
     margin: auto;
@@ -179,6 +180,7 @@
 .firstColumnSec {
     width: 50%;
     padding: 10px;
+    height: 500px;
 }
 
 .secondColumnSec {
@@ -225,4 +227,45 @@ input[type="number"] {
 .add_btn {
     margin-left: 10px;
     margin-bottom: 10px;
+}
+
+.alert-box {
+    width: 520px;
+    min-height: 150px;
+    background: #fff;
+    border-radius: 10px;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    /* transition: 1s; */
+}
+
+.alert-box.show {
+    opacity: 1;
+    pointer-events: all;
+    top: 50%;
+}
+
+.alert-img {
+    display: block;
+    margin: 10px auto 20px;
+    height: 60px;
+}
+
+.alert-msg {
+    color: black;
+    font-size: 20px;
+    text-transform: capitalize;
+    text-align: center;
+    line-height: 30px;
+    font-weight: 500;
+}
+
+.hide {
+    opacity: 0;
+    pointer-events: none;
 }

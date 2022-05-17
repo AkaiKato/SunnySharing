@@ -1,4 +1,5 @@
 var Administrator = require("../models/administrators"),
+    Users = require("../models/user"),
     AdministratorController = {},
     mongoose = require("mongoose");
 
@@ -64,5 +65,38 @@ AdministratorController.update = function(req, res) {
         }
     })
 }
+
+AdministratorController.getUnacceptedUsers = function(req, res) {
+    Users.find({ "accepted": 0 }, function(err, result) {
+        if (err) {
+            console.log(err);
+            res.send(500, err)
+        } else {
+            // console.log(result);
+            res.json(200, result)
+        }
+    })
+}
+
+AdministratorController.acceptUser = function(req, res) {
+    var id = req.body.id;
+    Users.findByIdAndUpdate(id, { "accepted": 1 }, function(err, result) {
+        if (err)
+            throw err;
+        // console.log(result);
+        res.json(200, { 'Good': "Good" })
+    })
+}
+
+AdministratorController.declineUser = function(req, res) {
+    var id = req.body.id;
+    Users.findByIdAndUpdate(id, { "accepted": 2 }, function(err, result) {
+        if (err)
+            throw err;
+        // console.log(result);
+        res.json(200, { 'Good': "Good" })
+    })
+}
+
 
 module.exports = AdministratorController;

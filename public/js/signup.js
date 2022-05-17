@@ -33,7 +33,7 @@ $(".submit-btn").on("click", function() {
         passportDate: $("#passportDate").val(),
         licenseNumber: $("#licenseNumber").val(),
         licenseDate: $("#licenseDate").val(),
-        accepted: false
+        accepted: 0
     }
     $.post("/signup", newUser, function(response) {
         processDataSignUp(response);

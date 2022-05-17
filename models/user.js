@@ -14,7 +14,7 @@ var UserSchema = mongoose.Schema({
     passportDate: Date,
     licenseNumber: Number,
     licenseDate: Date,
-    accepted: Boolean
+    accepted: Number
 });
 
 var User = mongoose.model("User", UserSchema);
