@@ -138,3 +138,74 @@ const declineBtnClick = (data) => {
         location.reload();
     })
 }
+
+const getImg = (data) => {
+    $.post('/getImg', data, function(responce) {
+        imgSrc = responce
+    })
+}
+
+async function createPlateCar(data) {
+    let carShow = document.querySelector('.main_show');
+    var imgSrc
+    await $.post('/getImg', { img: data.imgOfCar }, function(responce) {
+        imgSrc = "data:image/jpeg/png;base64," + responce
+    })
+    carShow.innerHTML += '\
+    <div class="car_specs">\
+        <div class="car_block">\
+            <div class="img_block">\
+                <img class="img_img" src="' + imgSrc + '" alt="zagl">\
+            </div>\
+            <div class="firstcol">\
+                <h3>Марка</h3>\
+                <p id="#brandC">' + data.brand + '</p>\
+                <h3>Модель</h3>\
+                <p id="#modelC">' + data.model + '</p>\
+            </div>\
+            <div class="secondcol">\
+                <h3>Регистрационный знак</h3>\
+                <p id="#registMarkC">' + data.registMark + '</p>\
+                <h3>Цвет</h3>\
+                <p id="#colorC">' + data.color + '</p>\
+            </div>\
+                <div class="thirdcol">\
+                <h3>Пробег</h3>\
+                <p id="#mileageC">' + data.mileage + 'KM</p>\
+                <h3>Коробка передач</h3>\
+                <p id="#transmissionC">' + data.transmission + '</p>\
+            </div>\
+            <div class="fourthcol">\
+                <h3>Тип двигателя</h3>\
+                <p id="#engineTypeC">' + data.engineType + '</p>\
+                <h3>Тип кузова</h3>\
+                <p id="#bodyTypeC">' + data.bodyType + '</p>\
+                </div>\
+            <div class="fifthcol">\
+                <h3>ПТС</h3>\
+                <p id="#PTSC">' + data.PTS + '</p>\
+                <h3>Номер стоянки</h3>\
+                <p id="#parkingNumberC">' + data.parkingNumber + '</p>\
+            </div>\
+        </div>\
+        <div class="block_btn">\
+            <button class="change_btn" onclick="changeCarBtnClick(' + "'" + data._id + "'" + ')">Изменить</button>\
+            <button class="delete_btn" onclick="deleteCarBtnClick(' + "'" + data._id + "'" + ')">Удалить</button>\
+        </div>\
+    </div> \
+    '
+
+}
+
+const changeCarBtnClick = (data) => {
+    sessionStorage.id = (data)
+    $.post("/getoneCar", { id: data }, function(responce) {
+        setDataCar(responce)
+    })
+}
+
+const deleteCarBtnClick = (data) => {
+    $.post("/deleteCar", { id: data }, function(responce) {
+        location.reload();
+    })
+}

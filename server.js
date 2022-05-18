@@ -5,7 +5,8 @@ var express = require("express"),
     mongoose = require("mongoose"),
     UserController = require("./controllers/UserController"),
     TechSupportController = require("./controllers/TechsupportController"),
-    AdministratorsController = require("./controllers/AdministratorsController")
+    AdministratorsController = require("./controllers/AdministratorsController"),
+    carController = require("./controllers/carController")
 
 const multer = require("multer");
 const fs = require("fs");
@@ -130,6 +131,8 @@ app.post('/adminupdate', (req, res) => {
     AdministratorsController.update(req, res);
 })
 
+//requestsToSignUp
+
 app.post('/getUnacceptedUsers', (req, res) => {
     AdministratorsController.getUnacceptedUsers(req, res)
 })
@@ -142,16 +145,40 @@ app.post('/declineUser', (req, res) => {
     AdministratorsController.declineUser(req, res)
 })
 
-app.post('/upload', (req, res) => {
+//workWithImages
+
+app.post('/upload', (req) => {
     imgPath = req.file.path //для того чтобы сохранить путь к файлу
 })
 
 app.post('/getImg', (req, res) => {
-    fs.readFile(__dirname + '/uploads/filedata-1652800984232.png', function(err, data) {
+    fs.readFile(__dirname + '\\' + req.body.img, function(err, data) {
         res.writeHead(200, { 'Content-Type': 'image/jpg' });
         res.write(Buffer.from(data).toString('base64'))
         res.end();
     });
+})
+
+//workWithCars
+
+app.post('/addCar', (req, res) => {
+    carController.create(req, imgPath, res)
+})
+
+app.post('/getAllCars', (req, res) => {
+    carController.getAll(req, res)
+})
+
+app.post('/deleteCar', (req, res) => {
+    carController.deleteById(req, res)
+})
+
+app.post('/getoneCar', (req, res) => {
+    carController.getOne(req, res)
+})
+
+app.post('/updateCar', (req, res) => {
+    carController.update(req, imgPath, res)
 })
 
 //history

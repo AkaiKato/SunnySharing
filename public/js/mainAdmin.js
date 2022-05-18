@@ -115,7 +115,7 @@ $('.add_btn').on('click', function() {
                 password: $("#passwordAdd").val()
             }
             $.post("/adminupdate", updateAdmin, function(responce) {
-                sessionStorage.id = null;
+                sessionStorage.clear()
                 location.href = '/mainAdmin';
             })
         } else {
@@ -129,7 +129,7 @@ $('.add_btn').on('click', function() {
                 password: $("#passwordAdd").val()
             }
             $.post("/techupdate", updateTech, function(responce) {
-                sessionStorage.id = null;
+                sessionStorage.clear()
                 location.href = '/mainAdmin';
             })
         }
