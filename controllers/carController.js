@@ -33,11 +33,9 @@ carController.getAll = function(req, res) {
         if (err) {
             console.log(err);
             res.send(500, err)
-        } else if (result.length != 0) {
+        } else {
             console.log(result);
             res.json(200, result)
-        } else {
-            res.json({ "AlertNp": 'no rq' })
         }
     })
 }

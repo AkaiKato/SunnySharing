@@ -29,13 +29,17 @@
     </header>
 
     <main>
+        <div class="alert-box" name="gg">
+            <img src="../img/error.png" class="alert-img" alt="">
+            <p class="alert-msg">Ошибка!</p>
+        </div>
         <div class="main-container">
-            <div class="send ">
+            <div class="send">
                 <div class="wrapper_person_content">
                     <p>Опишите вашу проблему:</p>
                 </div>
                 <div class="wrapper_person_enters_content">
-                    <textarea></textarea>
+                    <textarea id="textArea"></textarea>
                 </div>
                 <div class="wrapper_btn">
                     <button class="btn_send">Отправить заявку</button>
@@ -46,10 +50,11 @@
                     <p>Ответ тех поддержки:</p>
                 </div>
                 <div class="wrapper_techsupport_enters_content">
-                    <textarea disabled>Техподдержка пока не обработала заявку ожидайте!</textarea>
+                    <textarea id="texAreaAnsw" disabled>Техподдержка пока не обработала заявку, ожидайте!</textarea>
                 </div>
                 <div class="wrapper_btn">
-                    <button class="btn_send">Создать новую заявку</button>
+                    <button class="btn_made">Создать новую заявку</button>
+                    <button class="btn_close">На главную</button>
                 </div>
             </div>
         </div>
@@ -72,10 +77,8 @@
         </div>
     </footer>
 
-    <!-- <script src="../js/createProduct.js"></script>
-    <script src="../js/index.js"></script>
     <script src="../js/jquery-3.6.0.min.js"></script>
-    <script src="../js/footer.js"></script> -->
+    <script src="../js/techsupport.js"></script>
 </body>
 
 </html>

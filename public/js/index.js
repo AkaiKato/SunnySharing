@@ -31,7 +31,9 @@ const processDataLogIn = (data) => {
         location.replace('/mainAdmin');
         return;
     }
-    sessionStorage.user = JSON.stringify(data);
+    localStorage.setItem("userID", data.user.map(user => user._id));
+    localStorage.setItem("userLogin", data.user.map(user => user.login));
+    localStorage.removeItem('haveRequest')
     location.replace('/map');
 }
 

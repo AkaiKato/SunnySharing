@@ -61,7 +61,7 @@ UserController.login = function(req, res) {
             console.log(err);
             res.send(500, err);
         } else if (result.length !== 0) {
-            return res.json(200, result)
+            return res.json(200, { 'user': result })
         } else {
             Tech.find({ "login": login, "password": password }, function(err, result) {
                 if (err) {

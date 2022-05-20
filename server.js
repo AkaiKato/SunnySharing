@@ -147,8 +147,9 @@ app.post('/declineUser', (req, res) => {
 
 //workWithImages
 
-app.post('/upload', (req) => {
+app.post('/upload', (req, res) => {
     imgPath = req.file.path //для того чтобы сохранить путь к файлу
+        // res.send("dfg")
 })
 
 app.post('/getImg', (req, res) => {
@@ -179,6 +180,28 @@ app.post('/getoneCar', (req, res) => {
 
 app.post('/updateCar', (req, res) => {
     carController.update(req, imgPath, res)
+})
+
+//techsupportRequests
+
+app.post('/createRequest', (req, res) => {
+    TechSupportController.createRequest(req, res)
+})
+
+app.post('/checkStatus', (req, res) => {
+    TechSupportController.checkStatus(req, res)
+})
+
+app.post('/updateStatus', (req, res) => {
+    TechSupportController.updateStatus(req, res)
+})
+
+app.post('/getAllRequests', (req, res) => {
+    TechSupportController.getAllRequests(req, res)
+})
+
+app.post('/answerFromTech', (req, res) => {
+    TechSupportController.answerFromTech(req, res);
 })
 
 //history

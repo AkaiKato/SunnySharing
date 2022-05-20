@@ -43,14 +43,13 @@ window.onload = () => {
         var getUnacceptedUsers = { name: "all" }
         $.post("/getUnacceptedUsers", getUnacceptedUsers, function(responce) {
             if (responce.AlertNp) {
-
+                $('.emptyImg').removeClass('hide')
             } else {
                 responce.forEach(product => createPlateUser(product))
             }
         })
         $.post("/getAllCars", { name: "all" }, function(responce) {
             responce.forEach(product => createPlateCar(product))
-
         })
     } else {
         location.replace("/")
@@ -67,8 +66,6 @@ function previewFile(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
-
-
 
 $(".upl_btn").on('click', () => {
     flag = true;

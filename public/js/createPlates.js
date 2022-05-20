@@ -209,3 +209,77 @@ const deleteCarBtnClick = (data) => {
         location.reload();
     })
 }
+
+async function createPlateReq(data) {
+    let reqShow = document.querySelector('.main-container');
+    if (data.carID != '') {
+        var carInfo;
+        await $.post("/getoneCar", { id: data.carID }, function(responce) {
+            carInfo = responce;
+        })
+        reqShow.innerHTML += '\
+            <div class="wrapper_main_content">\
+                <div class="request_block">\
+                    <div class="text_request">\
+                        <textarea disabled>' + data.messageIn + '</textarea>\
+                    </div>\
+                    <div class="answ_request">\
+                        <textarea id="' + data._id + '"></textarea>\
+                    </div>\
+                    <div class="buttons">\
+                        <button class="btn_car" onclick="showCarTheTechRequest(' + "'" + data._id + "'" + ')">Посмотреть машину</button>\
+                        <button class="btn_end" onclick="answerTheTechRequest(' + "'" + data._id + "'" + ')">Ответить на заявку</button>\
+                    </div>\
+                </div>\
+                <div class="car_specs " id="' + data._id + '">\
+                    <div class="car_block">\
+                        <div class="leftColumn">\
+                            <h3>Марка</h3>\
+                            <p>' + carInfo.map(thing => thing.brand) + '</p>\
+                            <h3>Модель</h3>\
+                            <p>' + carInfo.map(thing => thing.model) + '</p>\
+                            <h3>Регистрационный знак</h3>\
+                            <p>' + carInfo.map(thing => thing.registMark) + '</p>\
+                            <h3>Цвет</h3>\
+                            <p>' + carInfo.map(thing => thing.color) + '</p>\
+                        </div>\
+                        <div class="rightColumn">\
+                            <h3>Пробег</h3>\
+                            <p>' + carInfo.map(thing => thing.mileage) + 'КМ</p>\
+                            <h3>Коробка передач</h3>\
+                            <p>' + carInfo.map(thing => thing.transmission) + '</p>\
+                            <h3>Тип двигателя</h3>\
+                            <p>' + carInfo.map(thing => thing.engineType) + '</p>\
+                            <h3>Тип кузова</h3>\
+                            <p>' + carInfo.map(thing => thing.bodyType) + '</p>\
+                        </div>\
+                    </div>\
+                </div>\
+            </div>\
+        '
+    } else {
+        reqShow.innerHTML += '\
+            <div class="wrapper_main_content">\
+                <div class="request_block">\
+                        <div class="text_request">\
+                            <textarea disabled>' + data.messageIn + '</textarea>\
+                        </div>\
+                        <div class="answ_request">\
+                            <textarea id="' + data._id + '"></textarea>\
+                        </div>\
+                        <div class="buttons">\
+                            <button class="btn_end" onclick="answerTheTechRequest(' + "'" + data._id + "'" + ')">Ответить на заявку</button>\
+                        </div>\
+                </div>\
+            </div>\
+        '
+    }
+}
+
+const showCarTheTechRequest = (data) => {
+    $('#' + data).toggle();
+}
+
+const answerTheTechRequest = (data) => {
+    answ_request(data)
+}

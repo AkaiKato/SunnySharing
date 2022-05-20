@@ -71,9 +71,10 @@ AdministratorController.getUnacceptedUsers = function(req, res) {
         if (err) {
             console.log(err);
             res.send(500, err)
-        } else {
-            // console.log(result);
+        } else if (result != 0) {
             res.json(200, result)
+        } else {
+            res.json({ "AlertNp": 'no rq' })
         }
     })
 }
@@ -83,7 +84,6 @@ AdministratorController.acceptUser = function(req, res) {
     Users.findByIdAndUpdate(id, { "accepted": 1 }, function(err, result) {
         if (err)
             throw err;
-        // console.log(result);
         res.json(200, { 'Good': "Good" })
     })
 }
@@ -93,7 +93,6 @@ AdministratorController.declineUser = function(req, res) {
     Users.findByIdAndUpdate(id, { "accepted": 2 }, function(err, result) {
         if (err)
             throw err;
-        // console.log(result);
         res.json(200, { 'Good': "Good" })
     })
 }
