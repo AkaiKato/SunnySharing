@@ -31,74 +31,50 @@
     <main>
         <div class="main-container">
             <div class="wrapper_head_content">
-                <p>Ваша история аренд!</p>
+                <div class="text-contr">
+                    <p>Ваша история аренд!</p>
+                </div>
+                <div class="button_back">
+                    <button class="btn_back">Вернуться на карту</button>
+                </div>
             </div>
-            <div class="wrapper_main_content">
+            <div class="wrapper_main_content_active">
                 <div class="history_block">
                     <div class="img_block">
-                        <img class="img_img" src="../img/car.jpeg" alt="zagl">
+                        <img class="img_img_Act" src="" alt="zagl">
                     </div>
                     <div class="car_block">
                         <div class="leftColumn">
                             <h3>Марка</h3>
-                            <p>KIA</p>
+                            <p class="brandAct"></p>
                             <h3>Модель</h3>
-                            <p>RIO</p>
+                            <p class="modelAct"></p>
                             <h3>Регистрационный знак</h3>
-                            <p>ОН123А</p>
+                            <p class="registMarkAct"></p>
                             <h3>Цвет</h3>
-                            <p>Черный</p>
+                            <p class="colorAct"></p>
+                            <h3>Дата начала аренды</h3>
+                            <p class="dateBeginAct"></p>
                         </div>
                         <div class="rightColumn">
                             <h3>Пробег</h3>
-                            <p>5555КМ</p>
+                            <p class="mileageAct">КМ</p>
                             <h3>Коробка передач</h3>
-                            <p>Автомат</p>
+                            <p class="transmissionAct"></p>
                             <h3>Тип двигателя</h3>
-                            <p>Бензин</p>
+                            <p class="engineTypeAct"></p>
                             <h3>Тип кузова</h3>
-                            <p>Седан</p>
+                            <p class="bodyTypeAct"></p>
+                            <h3>Дата конца аренды</h3>
+                            <p class="dateEndAct"></p>
                         </div>
                     </div>
                     <div class="button_end">
-                        <button class="btn_end">Закончить аренду</button>
+                        <button class="btn_end" onclick="endrentCarBtnClick()">Закончить аренду</button>
                     </div>
                 </div>
             </div>
-            <div class="wrapper_main_content">
-                <div class="history_block">
-                    <div class="img_block">
-                        <img class="img_img" src="../img/car.jpeg" alt="zagl">
-                    </div>
-                    <div class="car_block">
-                        <div class="leftColumn">
-                            <h3>Марка</h3>
-                            <p>KIA</p>
-                            <h3>Модель</h3>
-                            <p>RIO</p>
-                            <h3>Регистрационный знак</h3>
-                            <p>ОН123А</p>
-                            <h3>Цвет</h3>
-                            <p>Черный</p>
-                        </div>
-                        <div class="rightColumn">
-                            <h3>Пробег</h3>
-                            <p>5555КМ</p>
-                            <h3>Коробка передач</h3>
-                            <p>Автомат</p>
-                            <h3>Тип двигателя</h3>
-                            <p>Бензин</p>
-                            <h3>Тип кузова</h3>
-                            <p>Седан</p>
-                        </div>
-                    </div>
-                    <div class="button_end hide">
-                        <button class="btn_end">Закончить аренду</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+            <div class="wrapper_main_content"></div>
     </main>
 
     <footer>
@@ -118,10 +94,9 @@
         </div>
     </footer>
 
-    <!-- <script src="../js/createProduct.js"></script>
-    <script src="../js/index.js"></script>
     <script src="../js/jquery-3.6.0.min.js"></script>
-    <script src="../js/footer.js"></script> -->
+    <script src="../js/createPlates.js"></script>
+    <script src="../js/history.js"></script>
 </body>
 
 </html>

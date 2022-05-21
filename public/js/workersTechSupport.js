@@ -32,13 +32,6 @@ window.onload = () => {
     }
 }
 
-const showAlert = (msg) => {
-    $(".alert-msg").text(msg);
-    $(".alert-box").addClass("show");
-    setTimeout(() => {
-        $(".alert-box").removeClass("show");
-    }, 3000)
-}
 
 const answ_request = (data) => {
     if (!$("#" + data).val()) {

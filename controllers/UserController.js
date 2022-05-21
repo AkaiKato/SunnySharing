@@ -95,4 +95,29 @@ UserController.login = function(req, res) {
     });
 }
 
+UserController.getoneUser = function(req, res) {
+    User.find({ '_id': req.body.id }, function(err, result) {
+        if (err) {
+            console.log(err);
+            res.send(500, err);
+        } else {
+            res.json(200, result);
+        }
+    })
+}
+
+UserController.checkAccept = function(req, res) {
+    User.find({ $and: [{ '_id': req.body.id, 'accepted': 0 }] },
+        function(err, result) {
+            if (err) {
+                console.log(err);
+                res.send(500, err);
+            } else if (result != 0) {
+                res.json(200, { "False": 'result' });
+            } else {
+                res.json(200, { "True": result });
+            }
+        })
+}
+
 module.exports = UserController;

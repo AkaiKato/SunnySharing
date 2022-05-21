@@ -283,3 +283,155 @@ const showCarTheTechRequest = (data) => {
 const answerTheTechRequest = (data) => {
     answ_request(data)
 }
+
+async function createParkings() {
+    let parkings = document.querySelector('.sub-container');
+    for (var i = 1; i <= 5; i++) {
+        var adress
+        await $.post('/getOnePark', { parkingNumber: i }, function(responce) {
+            adress = responce.parkingStreet + " " + responce.parkingBuilding
+        })
+        parkings.innerHTML += '\
+            <div class="content_container" id="' + i.toString() + '">\
+                <div class="parkingAdress">\
+                    <h3>Парковка по адресу: ' + adress + '</h3>\
+                </div>\
+                <select class="droplist" id="dropList' + i.toString() + '">\
+                        <option value="" disabled selected>Выберите машину</option>\
+                </select>\
+                <img class="img_noCars" id="img' + i.toString() + '" src="../img/noCars.png">\
+                <div id="block' + i.toString() + '">\
+                    \
+                </div>\
+            </div>\
+        '
+    }
+}
+
+async function createParkingCar(data) {
+    await $.post('/checkcarContract', { carID: data._id }, function(responce) {
+        if (responce.False) {
+            secondStep(data)
+        }
+    })
+}
+
+async function secondStep(data) {
+    var imgSrc;
+    $('#dropList' + data.parkingNumber).append($('<option>', {
+        value: data._id,
+        text: data.model + " " + data.brand
+    }));
+
+    await $.post('/getImg', { img: data.imgOfCar }, function(responce) {
+        imgSrc = "data:image/jpeg/png;base64," + responce
+    })
+    await $('#block' + data.parkingNumber).append('\
+    <div class="car_specs" id="' + data._id + '">\
+        <img class="img_car" src="' + imgSrc + '" alt="zagl">\
+        <div class="car">\
+            <div class="leftColumn">\
+                <h3>Марка</h3>\
+                <p>' + data.brand + '</p>\
+                <h3>Модель</h3>\
+                <p>' + data.model + '</p>\
+                <h3>Регистрационный знак</h3>\
+                <p>' + data.registMark + '</p>\
+                <h3>Цвет</h3>\
+                <p>' + data.color + '</p>\
+            </div>\
+            <div class="rightColumn">\
+                <h3>Пробег</h3>\
+                <p>' + data.mileage + 'КМ</p>\
+                <h3>Коробка передач</h3>\
+                <p>' + data.transmission + '</p>\
+                <h3>Тип двигателя</h3>\
+                <p>' + data.engineType + '</p>\
+                <h3>Тип кузова</h3>\
+                <p>' + data.bodyType + '</p>\
+            </div>\
+        </div>\
+        <div class="btn-rent-form">\
+            <button class="btn_rent" onclick="rentCarBtnClick(' + "'" + data._id + "'" + ')">Арендовать</button>\
+        </div>\
+    </div>\
+    ')
+}
+
+const rentCarBtnClick = (data) => {
+    $.post('/checkAccept', { id: localStorage.getItem('userID') }, function(response) {
+        if (response.True) {
+            if (localStorage.getItem('carID') == null) {
+                localStorage.setItem('carID', data);
+                location.href = '/fee';
+            } else {
+                showAlert("У вас уже есть арендованая машина!")
+            }
+        } else {
+            showAlert("У вас не подтвержденный аккаунт, ждите подтверждения")
+        }
+    })
+
+}
+
+const showAlert = (msg) => {
+    $(".alert-msg").text(msg);
+    $(".alert-box").addClass("show");
+    setTimeout(() => {
+        $(".alert-box").removeClass("show");
+    }, 3000)
+}
+
+async function createHistoryCar(data) {
+    var carData, imgSrc;
+    var dateBeg = new Date(data.dateOfBegin)
+    var dateEnd = new Date(data.dateOfEnd)
+    var options = {
+        month: 'long',
+        day: 'numeric',
+        weekday: 'long',
+        hour: 'numeric',
+        minute: 'numeric',
+    };
+
+    await $.post('/getoneCar', { id: data.carID }, function(responce) {
+        console.log(responce)
+        carData = responce
+    })
+    await $.post('/getImg', { img: carData.map(data => data.imgOfCar) }, function(responce) {
+        imgSrc = "data:image/jpeg/png;base64," + responce
+    })
+    await $('.wrapper_main_content').append('\
+    <div class="history_block">\
+        <div class="img_block">\
+            <img class="img_img" src="' + imgSrc + '" alt="zagl">\
+        </div>\
+        <div class="car_block">\
+            <div class="leftColumn">\
+                <h3>Марка</h3>\
+                <p class="brand">' + carData.map(data => data.brand) + '</p>\
+                <h3>Модель</h3>\
+                <p class="model">' + carData.map(data => data.model) + '</p>\
+                <h3>Регистрационный знак</h3>\
+                <p class="registMark">' + carData.map(data => data.registMark) + '</p>\
+                <h3>Цвет</h3>\
+                <p class="color">' + carData.map(data => data.color) + '</p>\
+                <h3>Дата начала аренды</h3>\
+                <p class="dateBegin">' + dateBeg.toLocaleString("ru", options) + '</p>\
+            </div>\
+            <div class="rightColumn">\
+                <h3>Пробег</h3>\
+                <p class="mileage">' + carData.map(data => data.mileage) + 'КМ</p>\
+                <h3>Коробка передач</h3>\
+                <p class="transmission">' + carData.map(data => data.transmission) + '</p>\
+                <h3>Тип двигателя</h3>\
+                <p class="engineType">' + carData.map(data => data.engineType) + '</p>\
+                <h3>Тип кузова</h3>\
+                <p class="bodyType">' + carData.map(data => data.bodyType) + '</p>\
+                <h3>Дата конца аренды</h3>\
+                <p class="dateEnd">' + dateEnd.toLocaleString("ru", options) + '</p>\
+            </div>\
+        </div>\
+    </div>\
+    ')
+}

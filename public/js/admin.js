@@ -119,14 +119,6 @@ $(".add_btn").on('click', () => {
     }
 })
 
-const showAlert = (msg) => {
-    $(".alert-msg").text(msg);
-    $(".alert-box").addClass("show");
-    setTimeout(() => {
-        $(".alert-box").removeClass("show");
-    }, 3000)
-}
-
 async function setDataCar(data) {
     $('#brand').val(data.map(data => data.brand))
     $('#model').val(data.map(data => data.model))

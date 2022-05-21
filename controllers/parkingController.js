@@ -18,4 +18,16 @@ parkingsController.create = function(req, res) {
     });
 }
 
+parkingsController.getOnePark = function(req, res) {
+    parkings.findOne({ 'parkingNumber': req.body.parkingNumber }, function(err, result) {
+        if (err) {
+            console.log(err);
+            res.send(500, err)
+        } else {
+            console.log(result);
+            res.json(200, result);
+        }
+    })
+}
+
 module.exports = parkingsController;

@@ -161,3 +161,7 @@ input[type='radio'] {
     line-height: 30px;
     font-weight: 500;
 }
+
+.img_zagl {
+    width: 40%;
+}

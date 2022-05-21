@@ -5,24 +5,13 @@
     font-family: 'roboto', sans-serif;
 }
 
-select {
-    display: block;
-    font-size: large;
-    width: 95%;
-    padding: 20px;
-    border-radius: 5px;
-    background: #fff;
-    border: black;
-    outline: auto;
-    margin-top: 20px;
-    margin-left: 15px;
-    margin-bottom: 20px;
-    color: black;
-    font-size: 14px;
-}
-
 .container {
     display: flex;
+}
+
+header {
+    position: relative;
+    z-index: 9999;
 }
 
 .main-container {
@@ -32,9 +21,12 @@ select {
 }
 
 .sub-container {
+    position: relative;
     width: 30%;
     min-height: 100vh;
     display: flex;
+    background-color: white;
+    z-index: 2;
 }
 
 .alert-box {
@@ -50,6 +42,7 @@ select {
     opacity: 0;
     pointer-events: none;
     /* transition: 1s; */
+    z-index: 9999;
 }
 
 .alert-box.show {
@@ -85,11 +78,14 @@ select {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    position: relative;
+    z-index: 1;
 }
 
 .content_container {
     width: 100%;
     position: relative;
+    z-index: 1;
 }
 
 .car {
@@ -141,4 +137,29 @@ h3 {
 
 ::-webkit-scrollbar {
     display: none;
+}
+
+.droplist {
+    display: block;
+    width: 95%;
+    padding: 20px;
+    border-radius: 5px;
+    background: #fff;
+    border: black;
+    outline: auto;
+    margin-top: 20px;
+    margin-left: 15px;
+    margin-bottom: 20px;
+    color: black;
+    font-size: 14px;
+}
+
+.parkingAdress {
+    padding: 10px;
+    text-align: center;
+}
+
+.img_noCars {
+    float: right;
+    width: 100%;
 }

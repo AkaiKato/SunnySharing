@@ -15,19 +15,25 @@
 
 .wrapper_head_content {
     padding: 20px;
-    text-align: center;
+    width: 100%;
+    display: flex;
+    /* text-align: center; */
 }
 
 .wrapper_head_content p {
     font-size: 35px;
 }
 
-.wrapper_main_content {
+.wrapper_main_content,
+.wrapper_main_content_active {
     width: 100%;
-    height: 275px;
-    overflow: hidden;
+    height: 315px;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.wrapper_main_content {
+    height: auto;
 }
 
 .history_block {
@@ -38,6 +44,7 @@
     background-color: #dbd1d1;
     border: solid black;
     outline: auto;
+    margin-bottom: 20px;
 }
 
 .img_block {
@@ -46,7 +53,8 @@
     padding: 10px;
 }
 
-.img_img {
+.img_img,
+.img_img_Act {
     width: 100%;
     height: 100%;
     margin: auto;
@@ -92,7 +100,8 @@
     outline: auto;
 } */
 
-.btn_end {
+.btn_end,
+.btn_back {
     width: 80%;
     height: 80px;
     font-size: large;
@@ -107,6 +116,23 @@
     position: relative;
     top: 35%;
     left: 10%;
+}
+
+.text-contr {
+    width: 50%;
+    height: 100%;
+}
+
+.button_back {
+    width: 50%;
+    height: 100%;
+}
+
+.btn_back {
+    display: block;
+    float: right;
+    margin-right: 100px;
+    width: 30%;
 }
 
 ::-webkit-scrollbar {

@@ -66,9 +66,10 @@
 }
 
 .car {
-    margin-top: 50px;
+    margin-top: 25px;
     display: flex;
     width: 100%;
+    margin-bottom: 25px;
 }
 
 .leftColumn {
@@ -105,4 +106,10 @@
 
 ::-webkit-scrollbar {
     display: none;
+}
+
+.date {
+    margin-top: 25px;
+    width: 100%;
+    display: flex;
 }

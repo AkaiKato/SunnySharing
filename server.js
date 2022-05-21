@@ -6,7 +6,9 @@ var express = require("express"),
     UserController = require("./controllers/UserController"),
     TechSupportController = require("./controllers/TechsupportController"),
     AdministratorsController = require("./controllers/AdministratorsController"),
-    carController = require("./controllers/carController")
+    ParkingController = require("./controllers/parkingController"),
+    carController = require("./controllers/carController"),
+    ContractController = require("./controllers/contractController")
 
 const multer = require("multer");
 const fs = require("fs");
@@ -67,6 +69,14 @@ app.post("/UserLogin", function(req, res) {
 
 app.get("/map", (req, res) => {
     res.sendFile(path.join(staticPath, "html/main.html"))
+})
+
+app.post('/getOnePark', (req, res) => {
+    ParkingController.getOnePark(req, res)
+})
+
+app.post('/checkAccept', (req, res) => {
+    UserController.checkAccept(req, res)
 })
 
 //Q&A
@@ -216,5 +226,40 @@ app.get('/mainAdmin', (req, res) => {
     res.sendFile(path.join(staticPath, "html/mainAdmin.html"))
 })
 
+//fee
+
+app.get('/fee', (req, res) => {
+    res.sendFile(path.join(staticPath, "html/fee.html"))
+})
+
+app.post('/createContract', (req, res) => {
+    ContractController.create(req, res)
+})
+
+//endOfFee
+
+app.get('/endOfFee', (req, res) => {
+    res.sendFile(path.join(staticPath, 'html/endOfFee.html'))
+})
+
+app.post('/getoneUser', (req, res) => {
+    UserController.getoneUser(req, res);
+})
+
+app.post('/getCurrentContract', (req, res) => {
+    ContractController.getCurrentContract(req, res)
+})
+
+app.post('/endCurrentContract', (req, res) => {
+    ContractController.endCurrentContract(req, res)
+})
+
+app.post('/getAllEndedContracts', (req, res) => {
+    ContractController.getAllEndedContracts(req, res)
+})
+
+app.post('/checkcarContract', (req, res) => {
+    ContractController.checkcarContract(req, res)
+})
 
 http.createServer(app).listen(3000);
